@@ -106,8 +106,8 @@ namespace EasyInsurance
                 }
                 else
                 {
-                    lbStatus.Text = "Uspesno logovanje!";
-                    lbStatus.Visible = true;
+                    WorkerForm workerForm = new WorkerForm();
+                    workerForm.Show();
                 }
             }
             catch(Exception ex)

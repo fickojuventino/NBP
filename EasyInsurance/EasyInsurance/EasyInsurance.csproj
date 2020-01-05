@@ -55,12 +55,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FindInsured.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindInsured.Designer.cs">
+      <DependentUpon>FindInsured.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Insured.cs" />
     <Compile Include="Models\Worker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +77,21 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegisterInsuredForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterInsuredForm.Designer.cs">
+      <DependentUpon>RegisterInsuredForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerForm.Designer.cs">
+      <DependentUpon>WorkerForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FindInsured.resx">
+      <DependentUpon>FindInsured.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +106,12 @@
     </Compile>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterInsuredForm.resx">
+      <DependentUpon>RegisterInsuredForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkerForm.resx">
+      <DependentUpon>WorkerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

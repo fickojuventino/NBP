@@ -25,28 +25,41 @@ namespace EasyInsurance
         {
             try
             {
-                Worker worker = new Worker
+                var query = new Neo4jClient.Cypher.CypherQuery($"MATCH (w:Worker) WHERE w.UserName = '{tbUserName.Text}'" +
+                    $" RETURN w", new Dictionary<string, object>(), CypherResultMode.Set);
+
+                var user = ((IRawGraphClient)client).ExecuteGetCypherResults<Worker>(query).SingleOrDefault();
+
+                if (user == null)
                 {
-                    UserName = tbUserName.Text,
-                    FirstName = tbFirstName.Text,
-                    LastName = tbLastName.Text,
-                    Password = tbPassword.Text
-                };
+                    Worker worker = new Worker
+                    {
+                        UserName = tbUserName.Text,
+                        FirstName = tbFirstName.Text,
+                        LastName = tbLastName.Text,
+                        Password = tbPassword.Text
+                    };
 
-                Dictionary<string, object> queryDict = new Dictionary<string, object>();
-                queryDict.Add("UserName", worker.UserName);
-                queryDict.Add("FirstName", worker.FirstName);
-                queryDict.Add("LastName", worker.LastName);
-                queryDict.Add("Password", worker.Password);
+                    Dictionary<string, object> queryDict = new Dictionary<string, object>();
+                    queryDict.Add("UserName", worker.UserName);
+                    queryDict.Add("FirstName", worker.FirstName);
+                    queryDict.Add("LastName", worker.LastName);
+                    queryDict.Add("Password", worker.Password);
 
-                var query = new Neo4jClient.Cypher.CypherQuery("Create (n:Worker {UserName: '"
-                    + worker.UserName + "', FirstName: '" + worker.FirstName + "', LastName: '"
-                    + worker.LastName + "', Password: '" + worker.Password + "'})", queryDict, CypherResultMode.Set);
+                    query = new Neo4jClient.Cypher.CypherQuery("Create (n:Worker {UserName: '"
+                        + worker.UserName + "', FirstName: '" + worker.FirstName + "', LastName: '"
+                        + worker.LastName + "', Password: '" + worker.Password + "'})", queryDict, CypherResultMode.Set);
 
-                ((IRawGraphClient)client).ExecuteCypher(query);
+                    ((IRawGraphClient)client).ExecuteCypher(query);
 
-                lbStatus.Text = "Successfully registered";
-                lbStatus.Visible = true;
+                    lbStatus.Text = "Registracija uspesna.";
+                    lbStatus.Visible = true;
+                }
+                else
+                {
+                    lbStatus.Text = "Korisnicko ime je zauzeto.";
+                    lbStatus.Visible = true;
+                }
             }
             catch(Exception ex)
             {
