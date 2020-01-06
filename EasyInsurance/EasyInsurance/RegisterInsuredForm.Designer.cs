@@ -46,7 +46,7 @@
             this.btnAddInsured.Location = new System.Drawing.Point(114, 266);
             this.btnAddInsured.Name = "btnAddInsured";
             this.btnAddInsured.Size = new System.Drawing.Size(142, 23);
-            this.btnAddInsured.TabIndex = 0;
+            this.btnAddInsured.TabIndex = 9;
             this.btnAddInsured.Text = "Kreiraj nalog";
             this.btnAddInsured.UseVisualStyleBackColor = true;
             this.btnAddInsured.Click += new System.EventHandler(this.btnAddInsured_Click);
@@ -57,7 +57,7 @@
             this.tbFirstName.Location = new System.Drawing.Point(45, 12);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(293, 22);
-            this.tbFirstName.TabIndex = 1;
+            this.tbFirstName.TabIndex = 0;
             this.tbFirstName.Text = "Ime";
             // 
             // tbLastName
@@ -73,7 +73,7 @@
             this.tbIdentifier.Location = new System.Drawing.Point(45, 68);
             this.tbIdentifier.Name = "tbIdentifier";
             this.tbIdentifier.Size = new System.Drawing.Size(293, 22);
-            this.tbIdentifier.TabIndex = 1;
+            this.tbIdentifier.TabIndex = 2;
             this.tbIdentifier.Text = "JMBG";
             // 
             // cbGender
@@ -85,21 +85,21 @@
             this.cbGender.Location = new System.Drawing.Point(45, 124);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(121, 24);
-            this.cbGender.TabIndex = 2;
+            this.cbGender.TabIndex = 4;
             // 
             // dtpBirthdate
             // 
             this.dtpBirthdate.Location = new System.Drawing.Point(45, 154);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(247, 22);
-            this.dtpBirthdate.TabIndex = 3;
+            this.dtpBirthdate.TabIndex = 5;
             // 
             // tbCreditCard
             // 
             this.tbCreditCard.Location = new System.Drawing.Point(45, 182);
             this.tbCreditCard.Name = "tbCreditCard";
             this.tbCreditCard.Size = new System.Drawing.Size(293, 22);
-            this.tbCreditCard.TabIndex = 4;
+            this.tbCreditCard.TabIndex = 6;
             this.tbCreditCard.Text = "Broj racuna";
             // 
             // tbPhoneNumber
@@ -107,7 +107,7 @@
             this.tbPhoneNumber.Location = new System.Drawing.Point(45, 210);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(293, 22);
-            this.tbPhoneNumber.TabIndex = 5;
+            this.tbPhoneNumber.TabIndex = 7;
             this.tbPhoneNumber.Text = "Broj telefona";
             // 
             // tbMail
@@ -115,7 +115,7 @@
             this.tbMail.Location = new System.Drawing.Point(45, 238);
             this.tbMail.Name = "tbMail";
             this.tbMail.Size = new System.Drawing.Size(293, 22);
-            this.tbMail.TabIndex = 5;
+            this.tbMail.TabIndex = 8;
             this.tbMail.Text = "Mejl adresa";
             // 
             // tbAddress
@@ -123,7 +123,7 @@
             this.tbAddress.Location = new System.Drawing.Point(45, 96);
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(293, 22);
-            this.tbAddress.TabIndex = 5;
+            this.tbAddress.TabIndex = 3;
             this.tbAddress.Text = "Adresa stanovanja";
             // 
             // lbStatus

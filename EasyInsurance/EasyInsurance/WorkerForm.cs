@@ -25,7 +25,7 @@ namespace EasyInsurance
 
         private void tbFindInsured_Click(object sender, EventArgs e)
         {
-            FindInsured insured = new FindInsured();
+            FindInsuredForm insured = new FindInsuredForm();
             insured.Show();
         }
     }
