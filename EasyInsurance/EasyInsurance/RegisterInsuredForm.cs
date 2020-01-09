@@ -26,9 +26,10 @@ namespace EasyInsurance
             try
             {
                 var query = new Neo4jClient.Cypher.CypherQuery($"MATCH (i:Insured) WHERE i.Identifier = '{long.Parse(tbIdentifier.Text)}'" +
-                        $" RETURN i", new Dictionary<string, object>(), CypherResultMode.Set);
+                        $" or i.MailAddress = '" + tbMail.Text + "' or i.PhoneNumber = '" + tbPhoneNumber.Text + 
+                        "' or i.CreditCard = '" + tbCreditCard.Text +  "' RETURN i", new Dictionary<string, object>(), CypherResultMode.Set);
 
-                var user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).SingleOrDefault();
+                var user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).ToList().FirstOrDefault();
 
                 if (user == null)
                 {
@@ -72,7 +73,7 @@ namespace EasyInsurance
                 }
                 else
                 {
-                    lbStatus.Text = "Postoji korisnik sa tim jmbg-om.";
+                    lbStatus.Text = "JMBG, broj telefona, mejl adresa i broj racuna moraju biti jedinstveni.";
                     lbStatus.Visible = true;
                 }
             }

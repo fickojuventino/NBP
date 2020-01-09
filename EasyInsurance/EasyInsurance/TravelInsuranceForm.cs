@@ -13,17 +13,17 @@ using System.Windows.Forms;
 
 namespace EasyInsurance
 {
-    public partial class TravelForm : Form
+    public partial class TravelInsuranceForm : Form
     {
         private long identifier;
         private GraphClient client;
 
-        public TravelForm()
+        public TravelInsuranceForm()
         {
             InitializeComponent();
         }
 
-        public TravelForm(long identifier, GraphClient client)
+        public TravelInsuranceForm(long identifier, GraphClient client)
         {
             InitializeComponent();
             this.identifier = identifier;

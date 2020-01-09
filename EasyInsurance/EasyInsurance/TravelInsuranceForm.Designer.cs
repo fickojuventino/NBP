@@ -1,6 +1,6 @@
 ﻿namespace EasyInsurance
 {
-    partial class TravelForm
+    partial class TravelInsuranceForm
     {
         /// <summary>
         /// Required designer variable.

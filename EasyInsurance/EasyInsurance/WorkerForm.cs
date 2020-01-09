@@ -28,5 +28,15 @@ namespace EasyInsurance
             FindInsuredForm insured = new FindInsuredForm();
             insured.Show();
         }
+
+        private void btnCreateEvent_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStatistic_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

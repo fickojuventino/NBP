@@ -23,67 +23,6 @@ namespace EasyInsurance
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //GraphClient client;
-            //client = new GraphClient(new Uri("http://localhost:7474/db/data"), "neo4j", "graph");
-            //try
-            //{
-            //    client.Connect();
-
-            //    Worker korisnik = new Worker
-            //    {
-            //        FirstName = "Mustafa",
-            //        From = "MUSTAFIC",
-            //        Klout = "91"
-            //    };
-
-            //    Dictionary<string, object> queryDict = new Dictionary<string, object>();
-            //    queryDict.Add("name", korisnik.FirstName);
-            //    queryDict.Add("from", korisnik.From);
-            //    queryDict.Add("klout", korisnik.Klout);
-
-            //    var query = new Neo4jClient.Cypher.CypherQuery("CREATE (n:Person {Name:'" + korisnik.FirstName + "', From:'" + korisnik.From
-            //                                                    + "', Klout:'" + korisnik.Klout
-            //                                                    + "'}) return n",
-            //                                                    queryDict, CypherResultMode.Set);
-            //    List<Worker> users = ((IRawGraphClient)client).ExecuteGetCypherResults<Worker>(query).ToList();
-
-            //    //var query = new Neo4jClient.Cypher.CypherQuery("MATCH (a:Person) WHERE a.name <> 'Ian' RETURN a",
-            //    //                               new Dictionary<string, object>(), CypherResultMode.Set);
-
-            //    //List<User> users = ((IRawGraphClient)client).ExecuteGetCypherResults<User>(query).ToList();
-
-            //    foreach (Worker u in users)
-            //    {
-            //        MessageBox.Show(u.FirstName);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-
-            //using (var driver = GraphDatabase.Driver("bolt://localhost:7687", AuthTokens.Basic("neo4j", "graph")))
-            //using (var session = driver.Session())
-            //{
-            //    //session.Run("CREATE (a:Person {name:'Arthur', title:'King'})");
-            //    //var result = session.Run("MATCH (a:Person) WHERE a.name = 'Ian' RETURN a");
-
-            //    var result = session.Run("match (n)-[r:FRIEND]->(friend) return friend", new Dictionary<string, object>());
-
-            //    //foreach (User record in result)
-            //    //    MessageBox.Show($"{record.Name.As<string>()} {record.From.As<string>()}");
-
-            //    List<User> users = ((IRawGraphClient)driver).ExecuteGetCypherResults<User>(result).ToList();
-            //}
-
-            //var query = new Neo4jClient.Cypher.CypherQuery("start n=node(*) match (n)-[r:FRIEND]->(friend) return friend",
-            //                                               new Dictionary<string, object>(), CypherResultMode.Set);
-
-            //List<User> users = ((IRawGraphClient)client).ExecuteGetCypherResults<User>(query).ToList();
-        }
-
         private void Register_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();

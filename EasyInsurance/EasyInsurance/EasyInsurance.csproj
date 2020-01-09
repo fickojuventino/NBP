@@ -55,11 +55,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateEventForm.Designer.cs">
+      <DependentUpon>CreateEventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FindInsuredForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FindInsuredForm.Designer.cs">
       <DependentUpon>FindInsuredForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FindPolicyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindPolicyForm.Designer.cs">
+      <DependentUpon>FindPolicyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HealthInsuranceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HealthInsuranceForm.Designer.cs">
+      <DependentUpon>HealthInsuranceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LifeInsuranceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LifeInsuranceForm.Designer.cs">
+      <DependentUpon>LifeInsuranceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -70,11 +94,17 @@
     <Compile Include="Models\Insured.cs" />
     <Compile Include="Models\Policy.cs" />
     <Compile Include="Models\Worker.cs" />
-    <Compile Include="TravelForm.cs">
+    <Compile Include="PoliciesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TravelForm.Designer.cs">
-      <DependentUpon>TravelForm.cs</DependentUpon>
+    <Compile Include="PoliciesForm.Designer.cs">
+      <DependentUpon>PoliciesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TravelInsuranceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TravelInsuranceForm.Designer.cs">
+      <DependentUpon>TravelInsuranceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,14 +126,29 @@
     <Compile Include="WorkerForm.Designer.cs">
       <DependentUpon>WorkerForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CreateEventForm.resx">
+      <DependentUpon>CreateEventForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FindInsuredForm.resx">
       <DependentUpon>FindInsuredForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindPolicyForm.resx">
+      <DependentUpon>FindPolicyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HealthInsuranceForm.resx">
+      <DependentUpon>HealthInsuranceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LifeInsuranceForm.resx">
+      <DependentUpon>LifeInsuranceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TravelForm.resx">
-      <DependentUpon>TravelForm.cs</DependentUpon>
+    <EmbeddedResource Include="PoliciesForm.resx">
+      <DependentUpon>PoliciesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TravelInsuranceForm.resx">
+      <DependentUpon>TravelInsuranceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -29,23 +29,18 @@
         private void InitializeComponent()
         {
             this.tbIdentifier = new System.Windows.Forms.TextBox();
-            this.btnFindInsured = new System.Windows.Forms.Button();
-            this.gbSearch = new System.Windows.Forms.GroupBox();
-            this.tbPhoneNumber = new System.Windows.Forms.TextBox();
-            this.tbAddress = new System.Windows.Forms.TextBox();
-            this.tbLastName = new System.Windows.Forms.TextBox();
-            this.tbFirstName = new System.Windows.Forms.TextBox();
             this.tbMailAddress = new System.Windows.Forms.TextBox();
             this.rbIdentifier = new System.Windows.Forms.RadioButton();
             this.rbMail = new System.Windows.Forms.RadioButton();
-            this.rbRest = new System.Windows.Forms.RadioButton();
             this.rbCreditCard = new System.Windows.Forms.RadioButton();
             this.tbCreditCard = new System.Windows.Forms.TextBox();
             this.lbFirstName = new System.Windows.Forms.Label();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbInsuranceType = new System.Windows.Forms.ComboBox();
+            this.btnAddPolicy = new System.Windows.Forms.Button();
             this.btnRemoveInsured = new System.Windows.Forms.Button();
             this.btnShowPolicies = new System.Windows.Forms.Button();
-            this.btnAddPolicy = new System.Windows.Forms.Button();
             this.btnUpdateInsured = new System.Windows.Forms.Button();
             this.tbMailAddressInfo = new System.Windows.Forms.TextBox();
             this.tbPhoneNumberInfo = new System.Windows.Forms.TextBox();
@@ -64,82 +59,26 @@
             this.lbAddress = new System.Windows.Forms.Label();
             this.lbIdentifier = new System.Windows.Forms.Label();
             this.lbLastName = new System.Windows.Forms.Label();
-            this.cbInsuranceType = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.gbSearch.SuspendLayout();
+            this.rbPhoneNumber = new System.Windows.Forms.RadioButton();
+            this.tbPhoneNumber = new System.Windows.Forms.TextBox();
+            this.btnFindInsured = new System.Windows.Forms.Button();
+            this.lbStatus = new System.Windows.Forms.Label();
+            this.btnCreateEvent = new System.Windows.Forms.Button();
             this.gbData.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbIdentifier
             // 
-            this.tbIdentifier.Location = new System.Drawing.Point(127, 0);
+            this.tbIdentifier.Location = new System.Drawing.Point(127, 16);
             this.tbIdentifier.Name = "tbIdentifier";
             this.tbIdentifier.Size = new System.Drawing.Size(278, 22);
             this.tbIdentifier.TabIndex = 0;
             // 
-            // btnFindInsured
-            // 
-            this.btnFindInsured.Location = new System.Drawing.Point(330, 157);
-            this.btnFindInsured.Name = "btnFindInsured";
-            this.btnFindInsured.Size = new System.Drawing.Size(75, 118);
-            this.btnFindInsured.TabIndex = 1;
-            this.btnFindInsured.Text = "Pretraga";
-            this.btnFindInsured.UseVisualStyleBackColor = true;
-            this.btnFindInsured.Click += new System.EventHandler(this.btnFindInsured_Click);
-            // 
-            // gbSearch
-            // 
-            this.gbSearch.Controls.Add(this.tbPhoneNumber);
-            this.gbSearch.Controls.Add(this.tbAddress);
-            this.gbSearch.Controls.Add(this.tbLastName);
-            this.gbSearch.Controls.Add(this.tbFirstName);
-            this.gbSearch.Location = new System.Drawing.Point(13, 139);
-            this.gbSearch.Name = "gbSearch";
-            this.gbSearch.Size = new System.Drawing.Size(291, 136);
-            this.gbSearch.TabIndex = 3;
-            this.gbSearch.TabStop = false;
-            // 
-            // tbPhoneNumber
-            // 
-            this.tbPhoneNumber.Enabled = false;
-            this.tbPhoneNumber.Location = new System.Drawing.Point(6, 106);
-            this.tbPhoneNumber.Name = "tbPhoneNumber";
-            this.tbPhoneNumber.Size = new System.Drawing.Size(278, 22);
-            this.tbPhoneNumber.TabIndex = 0;
-            this.tbPhoneNumber.Text = "Broj Telefona";
-            // 
-            // tbAddress
-            // 
-            this.tbAddress.Enabled = false;
-            this.tbAddress.Location = new System.Drawing.Point(6, 78);
-            this.tbAddress.Name = "tbAddress";
-            this.tbAddress.Size = new System.Drawing.Size(278, 22);
-            this.tbAddress.TabIndex = 0;
-            this.tbAddress.Text = "Adresa";
-            // 
-            // tbLastName
-            // 
-            this.tbLastName.Enabled = false;
-            this.tbLastName.Location = new System.Drawing.Point(7, 50);
-            this.tbLastName.Name = "tbLastName";
-            this.tbLastName.Size = new System.Drawing.Size(278, 22);
-            this.tbLastName.TabIndex = 0;
-            this.tbLastName.Text = "Prezime";
-            // 
-            // tbFirstName
-            // 
-            this.tbFirstName.Enabled = false;
-            this.tbFirstName.Location = new System.Drawing.Point(7, 22);
-            this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(278, 22);
-            this.tbFirstName.TabIndex = 0;
-            this.tbFirstName.Text = "Ime";
-            // 
             // tbMailAddress
             // 
             this.tbMailAddress.Enabled = false;
-            this.tbMailAddress.Location = new System.Drawing.Point(127, 36);
+            this.tbMailAddress.Location = new System.Drawing.Point(127, 52);
             this.tbMailAddress.Name = "tbMailAddress";
             this.tbMailAddress.Size = new System.Drawing.Size(278, 22);
             this.tbMailAddress.TabIndex = 0;
@@ -148,7 +87,7 @@
             // 
             this.rbIdentifier.AutoSize = true;
             this.rbIdentifier.Checked = true;
-            this.rbIdentifier.Location = new System.Drawing.Point(12, 0);
+            this.rbIdentifier.Location = new System.Drawing.Point(16, 17);
             this.rbIdentifier.Name = "rbIdentifier";
             this.rbIdentifier.Size = new System.Drawing.Size(67, 21);
             this.rbIdentifier.TabIndex = 4;
@@ -160,7 +99,7 @@
             // rbMail
             // 
             this.rbMail.AutoSize = true;
-            this.rbMail.Location = new System.Drawing.Point(12, 37);
+            this.rbMail.Location = new System.Drawing.Point(16, 55);
             this.rbMail.Name = "rbMail";
             this.rbMail.Size = new System.Drawing.Size(102, 21);
             this.rbMail.TabIndex = 4;
@@ -168,21 +107,10 @@
             this.rbMail.UseVisualStyleBackColor = true;
             this.rbMail.CheckedChanged += new System.EventHandler(this.rbMail_CheckedChanged);
             // 
-            // rbRest
-            // 
-            this.rbRest.AutoSize = true;
-            this.rbRest.Location = new System.Drawing.Point(13, 112);
-            this.rbRest.Name = "rbRest";
-            this.rbRest.Size = new System.Drawing.Size(70, 21);
-            this.rbRest.TabIndex = 4;
-            this.rbRest.Text = "Ostalo";
-            this.rbRest.UseVisualStyleBackColor = true;
-            this.rbRest.CheckedChanged += new System.EventHandler(this.rbRest_CheckedChanged);
-            // 
             // rbCreditCard
             // 
             this.rbCreditCard.AutoSize = true;
-            this.rbCreditCard.Location = new System.Drawing.Point(12, 75);
+            this.rbCreditCard.Location = new System.Drawing.Point(16, 87);
             this.rbCreditCard.Name = "rbCreditCard";
             this.rbCreditCard.Size = new System.Drawing.Size(102, 21);
             this.rbCreditCard.TabIndex = 4;
@@ -193,7 +121,7 @@
             // tbCreditCard
             // 
             this.tbCreditCard.Enabled = false;
-            this.tbCreditCard.Location = new System.Drawing.Point(127, 75);
+            this.tbCreditCard.Location = new System.Drawing.Point(127, 86);
             this.tbCreditCard.Name = "tbCreditCard";
             this.tbCreditCard.Size = new System.Drawing.Size(278, 22);
             this.tbCreditCard.TabIndex = 0;
@@ -209,10 +137,9 @@
             // 
             // gbData
             // 
+            this.gbData.Controls.Add(this.btnCreateEvent);
             this.gbData.Controls.Add(this.groupBox1);
-            this.gbData.Controls.Add(this.btnRemoveInsured);
             this.gbData.Controls.Add(this.btnShowPolicies);
-            this.gbData.Controls.Add(this.btnUpdateInsured);
             this.gbData.Controls.Add(this.tbMailAddressInfo);
             this.gbData.Controls.Add(this.tbPhoneNumberInfo);
             this.gbData.Controls.Add(this.tbCreditCardInfo);
@@ -239,23 +166,27 @@
             this.gbData.Text = "Informacije o osiguraniku";
             this.gbData.Visible = false;
             // 
-            // btnRemoveInsured
+            // groupBox1
             // 
-            this.btnRemoveInsured.Location = new System.Drawing.Point(435, 221);
-            this.btnRemoveInsured.Name = "btnRemoveInsured";
-            this.btnRemoveInsured.Size = new System.Drawing.Size(155, 48);
-            this.btnRemoveInsured.TabIndex = 7;
-            this.btnRemoveInsured.Text = "Ukloni korisnika";
-            this.btnRemoveInsured.UseVisualStyleBackColor = true;
+            this.groupBox1.Controls.Add(this.cbInsuranceType);
+            this.groupBox1.Controls.Add(this.btnAddPolicy);
+            this.groupBox1.Location = new System.Drawing.Point(435, 21);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(155, 86);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
             // 
-            // btnShowPolicies
+            // cbInsuranceType
             // 
-            this.btnShowPolicies.Location = new System.Drawing.Point(435, 167);
-            this.btnShowPolicies.Name = "btnShowPolicies";
-            this.btnShowPolicies.Size = new System.Drawing.Size(155, 48);
-            this.btnShowPolicies.TabIndex = 7;
-            this.btnShowPolicies.Text = "Prikazi ugovore";
-            this.btnShowPolicies.UseVisualStyleBackColor = true;
+            this.cbInsuranceType.FormattingEnabled = true;
+            this.cbInsuranceType.Items.AddRange(new object[] {
+            "Zdravstveno osiguranje",
+            "Zivotno osiguranje",
+            "Putno osiguranje"});
+            this.cbInsuranceType.Location = new System.Drawing.Point(0, 21);
+            this.cbInsuranceType.Name = "cbInsuranceType";
+            this.cbInsuranceType.Size = new System.Drawing.Size(155, 24);
+            this.cbInsuranceType.TabIndex = 8;
             // 
             // btnAddPolicy
             // 
@@ -267,14 +198,37 @@
             this.btnAddPolicy.UseVisualStyleBackColor = true;
             this.btnAddPolicy.Click += new System.EventHandler(this.btnAddPolicy_Click);
             // 
+            // btnRemoveInsured
+            // 
+            this.btnRemoveInsured.Enabled = false;
+            this.btnRemoveInsured.Location = new System.Drawing.Point(217, 203);
+            this.btnRemoveInsured.Name = "btnRemoveInsured";
+            this.btnRemoveInsured.Size = new System.Drawing.Size(188, 54);
+            this.btnRemoveInsured.TabIndex = 7;
+            this.btnRemoveInsured.Text = "Ukloni korisnika";
+            this.btnRemoveInsured.UseVisualStyleBackColor = true;
+            this.btnRemoveInsured.Click += new System.EventHandler(this.btnRemoveInsured_Click);
+            // 
+            // btnShowPolicies
+            // 
+            this.btnShowPolicies.Location = new System.Drawing.Point(435, 140);
+            this.btnShowPolicies.Name = "btnShowPolicies";
+            this.btnShowPolicies.Size = new System.Drawing.Size(155, 48);
+            this.btnShowPolicies.TabIndex = 7;
+            this.btnShowPolicies.Text = "Prikazi ugovore";
+            this.btnShowPolicies.UseVisualStyleBackColor = true;
+            this.btnShowPolicies.Click += new System.EventHandler(this.btnShowPolicies_Click);
+            // 
             // btnUpdateInsured
             // 
-            this.btnUpdateInsured.Location = new System.Drawing.Point(435, 17);
+            this.btnUpdateInsured.Enabled = false;
+            this.btnUpdateInsured.Location = new System.Drawing.Point(16, 203);
             this.btnUpdateInsured.Name = "btnUpdateInsured";
-            this.btnUpdateInsured.Size = new System.Drawing.Size(155, 54);
+            this.btnUpdateInsured.Size = new System.Drawing.Size(175, 54);
             this.btnUpdateInsured.TabIndex = 7;
             this.btnUpdateInsured.Text = "Azuriraj informacije";
             this.btnUpdateInsured.UseVisualStyleBackColor = true;
+            this.btnUpdateInsured.Click += new System.EventHandler(this.btnUpdateInsured_Click);
             // 
             // tbMailAddressInfo
             // 
@@ -322,6 +276,7 @@
             // 
             // tbIdentifierInfo
             // 
+            this.tbIdentifierInfo.Enabled = false;
             this.tbIdentifierInfo.Location = new System.Drawing.Point(142, 81);
             this.tbIdentifierInfo.Name = "tbIdentifierInfo";
             this.tbIdentifierInfo.Size = new System.Drawing.Size(263, 22);
@@ -413,48 +368,76 @@
             this.lbLastName.TabIndex = 5;
             this.lbLastName.Text = "Prezime";
             // 
-            // cbInsuranceType
+            // rbPhoneNumber
             // 
-            this.cbInsuranceType.FormattingEnabled = true;
-            this.cbInsuranceType.Items.AddRange(new object[] {
-            "Zdravstveno osiguranje",
-            "Zivotno osiguranje",
-            "Putno osiguranje"});
-            this.cbInsuranceType.Location = new System.Drawing.Point(0, 26);
-            this.cbInsuranceType.Name = "cbInsuranceType";
-            this.cbInsuranceType.Size = new System.Drawing.Size(155, 24);
-            this.cbInsuranceType.TabIndex = 8;
+            this.rbPhoneNumber.AutoSize = true;
+            this.rbPhoneNumber.Location = new System.Drawing.Point(16, 126);
+            this.rbPhoneNumber.Name = "rbPhoneNumber";
+            this.rbPhoneNumber.Size = new System.Drawing.Size(109, 21);
+            this.rbPhoneNumber.TabIndex = 4;
+            this.rbPhoneNumber.Text = "Broj telefona";
+            this.rbPhoneNumber.UseVisualStyleBackColor = true;
+            this.rbPhoneNumber.CheckedChanged += new System.EventHandler(this.rbRest_CheckedChanged);
             // 
-            // groupBox1
+            // tbPhoneNumber
             // 
-            this.groupBox1.Controls.Add(this.cbInsuranceType);
-            this.groupBox1.Controls.Add(this.btnAddPolicy);
-            this.groupBox1.Location = new System.Drawing.Point(435, 75);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(155, 86);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
+            this.tbPhoneNumber.Enabled = false;
+            this.tbPhoneNumber.Location = new System.Drawing.Point(127, 126);
+            this.tbPhoneNumber.Name = "tbPhoneNumber";
+            this.tbPhoneNumber.Size = new System.Drawing.Size(278, 22);
+            this.tbPhoneNumber.TabIndex = 0;
+            // 
+            // btnFindInsured
+            // 
+            this.btnFindInsured.Location = new System.Drawing.Point(16, 155);
+            this.btnFindInsured.Name = "btnFindInsured";
+            this.btnFindInsured.Size = new System.Drawing.Size(389, 42);
+            this.btnFindInsured.TabIndex = 1;
+            this.btnFindInsured.Text = "Pretraga";
+            this.btnFindInsured.UseVisualStyleBackColor = true;
+            this.btnFindInsured.Click += new System.EventHandler(this.btnFindInsured_Click);
+            // 
+            // lbStatus
+            // 
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Location = new System.Drawing.Point(13, 284);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(46, 17);
+            this.lbStatus.TabIndex = 7;
+            this.lbStatus.Text = "label1";
+            this.lbStatus.Visible = false;
+            // 
+            // btnCreateEvent
+            // 
+            this.btnCreateEvent.Location = new System.Drawing.Point(435, 221);
+            this.btnCreateEvent.Name = "btnCreateEvent";
+            this.btnCreateEvent.Size = new System.Drawing.Size(155, 50);
+            this.btnCreateEvent.TabIndex = 10;
+            this.btnCreateEvent.Text = "Kreiraj dogadjaj";
+            this.btnCreateEvent.UseVisualStyleBackColor = true;
+            this.btnCreateEvent.Click += new System.EventHandler(this.btnCreateEvent_Click);
             // 
             // FindInsuredForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 279);
+            this.ClientSize = new System.Drawing.Size(1050, 307);
+            this.Controls.Add(this.lbStatus);
+            this.Controls.Add(this.btnRemoveInsured);
             this.Controls.Add(this.gbData);
+            this.Controls.Add(this.tbPhoneNumber);
+            this.Controls.Add(this.btnUpdateInsured);
             this.Controls.Add(this.tbCreditCard);
             this.Controls.Add(this.tbMailAddress);
             this.Controls.Add(this.rbCreditCard);
-            this.Controls.Add(this.rbRest);
+            this.Controls.Add(this.rbPhoneNumber);
             this.Controls.Add(this.rbMail);
             this.Controls.Add(this.rbIdentifier);
-            this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.btnFindInsured);
             this.Controls.Add(this.tbIdentifier);
             this.Name = "FindInsuredForm";
             this.Text = "FindInsured";
             this.Load += new System.EventHandler(this.FindInsured_Load);
-            this.gbSearch.ResumeLayout(false);
-            this.gbSearch.PerformLayout();
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -466,18 +449,11 @@
         #endregion
 
         private System.Windows.Forms.TextBox tbIdentifier;
-        private System.Windows.Forms.Button btnFindInsured;
-        private System.Windows.Forms.GroupBox gbSearch;
-        private System.Windows.Forms.TextBox tbAddress;
-        private System.Windows.Forms.TextBox tbLastName;
-        private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.TextBox tbMailAddress;
         private System.Windows.Forms.RadioButton rbIdentifier;
         private System.Windows.Forms.RadioButton rbMail;
-        private System.Windows.Forms.RadioButton rbRest;
         private System.Windows.Forms.RadioButton rbCreditCard;
         private System.Windows.Forms.TextBox tbCreditCard;
-        private System.Windows.Forms.TextBox tbPhoneNumber;
         private System.Windows.Forms.Label lbFirstName;
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.Label lbMailAddress;
@@ -503,5 +479,10 @@
         private System.Windows.Forms.Button btnAddPolicy;
         private System.Windows.Forms.ComboBox cbInsuranceType;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbPhoneNumber;
+        private System.Windows.Forms.TextBox tbPhoneNumber;
+        private System.Windows.Forms.Button btnFindInsured;
+        private System.Windows.Forms.Label lbStatus;
+        private System.Windows.Forms.Button btnCreateEvent;
     }
 }

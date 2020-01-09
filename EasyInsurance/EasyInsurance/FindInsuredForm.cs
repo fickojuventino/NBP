@@ -16,6 +16,7 @@ namespace EasyInsurance
     public partial class FindInsuredForm : Form
     {
         GraphClient client;
+        private Insured user = null;
 
         public FindInsuredForm()
         {
@@ -30,29 +31,37 @@ namespace EasyInsurance
                 {
                     var query = new CypherQuery("MATCH (i:Insured) WHERE i.Identifier = '" + long.Parse(tbIdentifier.Text)
                         + "' RETURN i", new Dictionary<string, object>(), CypherResultMode.Set);
-                    var user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).SingleOrDefault();
+                    user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).SingleOrDefault();
 
-                    showUserData(user);
+                    showUserData();
+                    allowActions();
                 }
                 else if (rbMail.Checked)
                 {
                     var query = new CypherQuery("MATCH (i:Insured) WHERE i.MailAddress = '" + tbMailAddress.Text 
                         + "' RETURN i", new Dictionary<string, object>(), CypherResultMode.Set);
-                    var user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).ToList();
+                    user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).SingleOrDefault();
 
-                    showUserData(user.FirstOrDefault());
+                    showUserData();
+                    allowActions();
                 }
                 else if (rbCreditCard.Checked)
                 {
                     var query = new CypherQuery("MATCH (i:Insured) WHERE i.CreditCard = '" + tbCreditCard.Text
                         + "' RETURN i", new Dictionary<string, object>(), CypherResultMode.Set);
-                    var user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).ToList();
+                    user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).SingleOrDefault();
 
-                    showUserData(user.FirstOrDefault());
+                    showUserData();
+                    allowActions();
                 }
                 else
                 {
+                    var query = new CypherQuery("MATCH (i:Insured) WHERE i.PhoneNumber = '" + tbPhoneNumber.Text
+                        + "' RETURN i", new Dictionary<string, object>(), CypherResultMode.Set);
+                    user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).SingleOrDefault();
 
+                    showUserData();
+                    allowActions();
                 }
             }
             catch(Exception ex)
@@ -67,7 +76,6 @@ namespace EasyInsurance
             try
             {
                 client.Connect();
-                //this.Size = new Size { Height = 250, Width = 350 };
             }
             catch (Exception ex)
             {
@@ -103,33 +111,21 @@ namespace EasyInsurance
                     tbIdentifier.Enabled = true;
                     tbCreditCard.Enabled = false;
                     tbMailAddress.Enabled = false;
-                    tbFirstName.Enabled = false;
-                    tbLastName.Enabled = false;
-                    tbAddress.Enabled = false;
                     tbPhoneNumber.Enabled = false;
                     break;
                 case "CreditCard":
                     tbCreditCard.Enabled = true;
                     tbIdentifier.Enabled = false;
                     tbMailAddress.Enabled = false;
-                    tbFirstName.Enabled = false;
-                    tbLastName.Enabled = false;
-                    tbAddress.Enabled = false;
                     tbPhoneNumber.Enabled = false;
                     break;
                 case "MailAddress":
                     tbMailAddress.Enabled = true;
                     tbIdentifier.Enabled = false;
                     tbCreditCard.Enabled = false;
-                    tbFirstName.Enabled = false;
-                    tbLastName.Enabled = false;
-                    tbAddress.Enabled = false;
                     tbPhoneNumber.Enabled = false;
                     break;
                 case "Rest":
-                    tbFirstName.Enabled = true;
-                    tbLastName.Enabled = true;
-                    tbAddress.Enabled = true;
                     tbPhoneNumber.Enabled = true;
                     tbIdentifier.Enabled = false;
                     tbCreditCard.Enabled = false;
@@ -138,7 +134,7 @@ namespace EasyInsurance
             }
         }
 
-        private void showUserData(Insured user)
+        private void showUserData()
         {
             if (user == null)
             {
@@ -146,11 +142,6 @@ namespace EasyInsurance
             }
             else
             {
-                //this.Size = new Size
-                //{
-                //    Height = 334,
-                //    Width = 1448
-                //};
                 gbData.Visible = true;
                 tbFirstNameInfo.Text = user.FirstName;
                 tbLastNameInfo.Text = user.LastName;
@@ -164,13 +155,94 @@ namespace EasyInsurance
             }
         }
 
+        private void allowActions()
+        {
+            if (user != null)
+            {
+                btnUpdateInsured.Enabled = true;
+                btnRemoveInsured.Enabled = true;
+            }
+            else
+            {
+                btnUpdateInsured.Enabled = false;
+                btnRemoveInsured.Enabled = false;
+            }
+        }
+
         private void btnAddPolicy_Click(object sender, EventArgs e)
         {
             if(cbInsuranceType.Text == "Putno osiguranje")
             {
-                TravelForm travelForm = new TravelForm(long.Parse(tbIdentifier.Text), client);
+                TravelInsuranceForm travelForm = new TravelInsuranceForm(long.Parse(tbIdentifier.Text), client);
                 travelForm.Show();
             }
+            else if(cbInsuranceType.Text == "Zivotno osiguranje")
+            {
+                LifeInsuranceForm lifeInsuranceForm = new LifeInsuranceForm(client, long.Parse(tbIdentifier.Text), tbGenderInfo.Text, DateTime.Parse(tbBirthDateInfo.Text));
+                lifeInsuranceForm.Show();
+            }
+            else if(cbInsuranceType.Text == "Zdravstveno osiguranje")
+            {
+
+            }
+        }
+
+        private void btnUpdateInsured_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var query = new CypherQuery("MATCH (i { Identifier: '" + long.Parse(tbIdentifierInfo.Text)
+                    + "' }) SET i.FirstName = '" + tbFirstNameInfo.Text + "', i.LastName = '" + tbLastNameInfo.Text
+                    + "', i.Address = '" + tbAddressInfo.Text + "', i.CreditCard = '" + tbCreditCardInfo.Text +
+                    "', i.PhoneNumber = '" + tbPhoneNumberInfo.Text + "', i.MailAddress = '" + tbMailAddressInfo.Text + "'",
+                    new Dictionary<string, object>(), CypherResultMode.Set);
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+                lbStatus.Text = "Uspesno azuriran korisnik.";
+                lbStatus.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnShowPolicies_Click(object sender, EventArgs e)
+        {
+            PoliciesForm policiesForm = new PoliciesForm(long.Parse(tbIdentifierInfo.Text), client);
+            policiesForm.Show();
+        }
+
+        private void btnRemoveInsured_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Da li ste sigurni?", "Ukloni korisnika", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    var query = new CypherQuery("MATCH (i:Insured { Identifier: '" + long.Parse(tbIdentifier.Text) + "' }) DETACH DELETE i",
+                        new Dictionary<string, object>(), CypherResultMode.Set);
+                    ((IRawGraphClient)client).ExecuteCypher(query);
+
+                    gbData.Visible = false;
+                    lbStatus.Text = "Korisnik uspesno obrisan";
+                    lbStatus.Visible = true;
+
+                    user = null;
+                    allowActions();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btnCreateEvent_Click(object sender, EventArgs e)
+        {
+                CreateEventForm createEventForm = new CreateEventForm(client, user);
+                createEventForm.Show();
         }
     }
 }
