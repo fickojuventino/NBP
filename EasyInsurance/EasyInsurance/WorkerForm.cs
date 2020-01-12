@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Neo4jClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,20 +13,22 @@ namespace EasyInsurance
 {
     public partial class WorkerForm : Form
     {
-        public WorkerForm()
+        private GraphClient client;
+        public WorkerForm(GraphClient client)
         {
+            this.client = client;
             InitializeComponent();
         }
 
         private void btnAddInsured_Click(object sender, EventArgs e)
         {
-            RegisterInsuredForm registerInsuredForm = new RegisterInsuredForm();
+            RegisterInsuredForm registerInsuredForm = new RegisterInsuredForm(client);
             registerInsuredForm.Show();
         }
 
         private void tbFindInsured_Click(object sender, EventArgs e)
         {
-            FindInsuredForm insured = new FindInsuredForm();
+            FindInsuredForm insured = new FindInsuredForm(client);
             insured.Show();
         }
 

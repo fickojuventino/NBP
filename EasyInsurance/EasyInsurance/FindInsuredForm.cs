@@ -18,8 +18,9 @@ namespace EasyInsurance
         GraphClient client;
         private Insured user = null;
 
-        public FindInsuredForm()
+        public FindInsuredForm(GraphClient client)
         {
+            this.client = client;
             InitializeComponent();
         }
 
@@ -72,15 +73,6 @@ namespace EasyInsurance
 
         private void FindInsured_Load(object sender, EventArgs e)
         {
-            client = new GraphClient(new Uri("http://localhost:7474/db/data"), "neo4j", "graph");
-            try
-            {
-                client.Connect();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void rbIdentifier_CheckedChanged(object sender, EventArgs e)

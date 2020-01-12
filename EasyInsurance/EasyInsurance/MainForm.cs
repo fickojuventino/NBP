@@ -25,7 +25,7 @@ namespace EasyInsurance
 
         private void Register_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
+            RegisterForm registerForm = new RegisterForm(client);
             registerForm.Show();
         }
 
@@ -45,7 +45,7 @@ namespace EasyInsurance
                 }
                 else
                 {
-                    WorkerForm workerForm = new WorkerForm();
+                    WorkerForm workerForm = new WorkerForm(client);
                     workerForm.Show();
                 }
             }

@@ -16,8 +16,9 @@ namespace EasyInsurance
     public partial class RegisterInsuredForm : Form
     {
         private GraphClient client;
-        public RegisterInsuredForm()
+        public RegisterInsuredForm(GraphClient client)
         {
+            this.client = client;
             InitializeComponent();
         }
 
@@ -85,15 +86,7 @@ namespace EasyInsurance
 
         private void RegisterInsuredForm_Load(object sender, EventArgs e)
         {
-            client = new GraphClient(new Uri("http://localhost:7474/db/data"), "neo4j", "graph");
-            try
-            {
-                client.Connect();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
     }
 }

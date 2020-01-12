@@ -16,8 +16,9 @@ namespace EasyInsurance
     public partial class RegisterForm : Form
     {
         private GraphClient client;
-        public RegisterForm()
+        public RegisterForm(GraphClient client)
         {
+            this.client = client;
             InitializeComponent();
         }
 
@@ -70,17 +71,6 @@ namespace EasyInsurance
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            tbPassword.PasswordChar = '*';
-
-            client = new GraphClient(new Uri("http://localhost:7474/db/data"), "neo4j", "graph");
-            try
-            {
-                client.Connect();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
     }
 }
