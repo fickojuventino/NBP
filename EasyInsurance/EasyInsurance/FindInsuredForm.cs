@@ -175,7 +175,8 @@ namespace EasyInsurance
             }
             else if(cbInsuranceType.Text == "Zdravstveno osiguranje")
             {
-
+                HealthInsuranceForm healthInsuranceForm = new HealthInsuranceForm(client, long.Parse(tbIdentifier.Text));
+                healthInsuranceForm.Show();
             }
         }
 
@@ -235,6 +236,12 @@ namespace EasyInsurance
         {
                 CreateEventForm createEventForm = new CreateEventForm(client, user);
                 createEventForm.Show();
+        }
+
+        private void btnFindEvents_Click(object sender, EventArgs e)
+        {
+            ShowEventsForm showEventsForm = new ShowEventsForm(client, long.Parse(tbIdentifierInfo.Text));
+            showEventsForm.Show();
         }
     }
 }

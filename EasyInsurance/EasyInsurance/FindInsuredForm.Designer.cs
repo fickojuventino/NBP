@@ -36,12 +36,11 @@
             this.tbCreditCard = new System.Windows.Forms.TextBox();
             this.lbFirstName = new System.Windows.Forms.Label();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.btnCreateEvent = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbInsuranceType = new System.Windows.Forms.ComboBox();
             this.btnAddPolicy = new System.Windows.Forms.Button();
-            this.btnRemoveInsured = new System.Windows.Forms.Button();
             this.btnShowPolicies = new System.Windows.Forms.Button();
-            this.btnUpdateInsured = new System.Windows.Forms.Button();
             this.tbMailAddressInfo = new System.Windows.Forms.TextBox();
             this.tbPhoneNumberInfo = new System.Windows.Forms.TextBox();
             this.tbCreditCardInfo = new System.Windows.Forms.TextBox();
@@ -59,11 +58,13 @@
             this.lbAddress = new System.Windows.Forms.Label();
             this.lbIdentifier = new System.Windows.Forms.Label();
             this.lbLastName = new System.Windows.Forms.Label();
+            this.btnRemoveInsured = new System.Windows.Forms.Button();
+            this.btnUpdateInsured = new System.Windows.Forms.Button();
             this.rbPhoneNumber = new System.Windows.Forms.RadioButton();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.btnFindInsured = new System.Windows.Forms.Button();
             this.lbStatus = new System.Windows.Forms.Label();
-            this.btnCreateEvent = new System.Windows.Forms.Button();
+            this.btnFindEvents = new System.Windows.Forms.Button();
             this.gbData.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -137,6 +138,7 @@
             // 
             // gbData
             // 
+            this.gbData.Controls.Add(this.btnFindEvents);
             this.gbData.Controls.Add(this.btnCreateEvent);
             this.gbData.Controls.Add(this.groupBox1);
             this.gbData.Controls.Add(this.btnShowPolicies);
@@ -165,6 +167,16 @@
             this.gbData.TabStop = false;
             this.gbData.Text = "Informacije o osiguraniku";
             this.gbData.Visible = false;
+            // 
+            // btnCreateEvent
+            // 
+            this.btnCreateEvent.Location = new System.Drawing.Point(435, 163);
+            this.btnCreateEvent.Name = "btnCreateEvent";
+            this.btnCreateEvent.Size = new System.Drawing.Size(155, 50);
+            this.btnCreateEvent.TabIndex = 10;
+            this.btnCreateEvent.Text = "Kreiraj dogadjaj";
+            this.btnCreateEvent.UseVisualStyleBackColor = true;
+            this.btnCreateEvent.Click += new System.EventHandler(this.btnCreateEvent_Click);
             // 
             // groupBox1
             // 
@@ -198,37 +210,15 @@
             this.btnAddPolicy.UseVisualStyleBackColor = true;
             this.btnAddPolicy.Click += new System.EventHandler(this.btnAddPolicy_Click);
             // 
-            // btnRemoveInsured
-            // 
-            this.btnRemoveInsured.Enabled = false;
-            this.btnRemoveInsured.Location = new System.Drawing.Point(217, 203);
-            this.btnRemoveInsured.Name = "btnRemoveInsured";
-            this.btnRemoveInsured.Size = new System.Drawing.Size(188, 54);
-            this.btnRemoveInsured.TabIndex = 7;
-            this.btnRemoveInsured.Text = "Ukloni korisnika";
-            this.btnRemoveInsured.UseVisualStyleBackColor = true;
-            this.btnRemoveInsured.Click += new System.EventHandler(this.btnRemoveInsured_Click);
-            // 
             // btnShowPolicies
             // 
-            this.btnShowPolicies.Location = new System.Drawing.Point(435, 140);
+            this.btnShowPolicies.Location = new System.Drawing.Point(435, 109);
             this.btnShowPolicies.Name = "btnShowPolicies";
             this.btnShowPolicies.Size = new System.Drawing.Size(155, 48);
             this.btnShowPolicies.TabIndex = 7;
             this.btnShowPolicies.Text = "Prikazi ugovore";
             this.btnShowPolicies.UseVisualStyleBackColor = true;
             this.btnShowPolicies.Click += new System.EventHandler(this.btnShowPolicies_Click);
-            // 
-            // btnUpdateInsured
-            // 
-            this.btnUpdateInsured.Enabled = false;
-            this.btnUpdateInsured.Location = new System.Drawing.Point(16, 203);
-            this.btnUpdateInsured.Name = "btnUpdateInsured";
-            this.btnUpdateInsured.Size = new System.Drawing.Size(175, 54);
-            this.btnUpdateInsured.TabIndex = 7;
-            this.btnUpdateInsured.Text = "Azuriraj informacije";
-            this.btnUpdateInsured.UseVisualStyleBackColor = true;
-            this.btnUpdateInsured.Click += new System.EventHandler(this.btnUpdateInsured_Click);
             // 
             // tbMailAddressInfo
             // 
@@ -368,6 +358,28 @@
             this.lbLastName.TabIndex = 5;
             this.lbLastName.Text = "Prezime";
             // 
+            // btnRemoveInsured
+            // 
+            this.btnRemoveInsured.Enabled = false;
+            this.btnRemoveInsured.Location = new System.Drawing.Point(217, 221);
+            this.btnRemoveInsured.Name = "btnRemoveInsured";
+            this.btnRemoveInsured.Size = new System.Drawing.Size(188, 54);
+            this.btnRemoveInsured.TabIndex = 7;
+            this.btnRemoveInsured.Text = "Ukloni korisnika";
+            this.btnRemoveInsured.UseVisualStyleBackColor = true;
+            this.btnRemoveInsured.Click += new System.EventHandler(this.btnRemoveInsured_Click);
+            // 
+            // btnUpdateInsured
+            // 
+            this.btnUpdateInsured.Enabled = false;
+            this.btnUpdateInsured.Location = new System.Drawing.Point(16, 221);
+            this.btnUpdateInsured.Name = "btnUpdateInsured";
+            this.btnUpdateInsured.Size = new System.Drawing.Size(175, 54);
+            this.btnUpdateInsured.TabIndex = 7;
+            this.btnUpdateInsured.Text = "Azuriraj informacije";
+            this.btnUpdateInsured.UseVisualStyleBackColor = true;
+            this.btnUpdateInsured.Click += new System.EventHandler(this.btnUpdateInsured_Click);
+            // 
             // rbPhoneNumber
             // 
             this.rbPhoneNumber.AutoSize = true;
@@ -389,7 +401,7 @@
             // 
             // btnFindInsured
             // 
-            this.btnFindInsured.Location = new System.Drawing.Point(16, 155);
+            this.btnFindInsured.Location = new System.Drawing.Point(16, 173);
             this.btnFindInsured.Name = "btnFindInsured";
             this.btnFindInsured.Size = new System.Drawing.Size(389, 42);
             this.btnFindInsured.TabIndex = 1;
@@ -407,15 +419,15 @@
             this.lbStatus.Text = "label1";
             this.lbStatus.Visible = false;
             // 
-            // btnCreateEvent
+            // btnFindEvents
             // 
-            this.btnCreateEvent.Location = new System.Drawing.Point(435, 221);
-            this.btnCreateEvent.Name = "btnCreateEvent";
-            this.btnCreateEvent.Size = new System.Drawing.Size(155, 50);
-            this.btnCreateEvent.TabIndex = 10;
-            this.btnCreateEvent.Text = "Kreiraj dogadjaj";
-            this.btnCreateEvent.UseVisualStyleBackColor = true;
-            this.btnCreateEvent.Click += new System.EventHandler(this.btnCreateEvent_Click);
+            this.btnFindEvents.Location = new System.Drawing.Point(435, 221);
+            this.btnFindEvents.Name = "btnFindEvents";
+            this.btnFindEvents.Size = new System.Drawing.Size(155, 50);
+            this.btnFindEvents.TabIndex = 10;
+            this.btnFindEvents.Text = "Dogadjaji osiguranika";
+            this.btnFindEvents.UseVisualStyleBackColor = true;
+            this.btnFindEvents.Click += new System.EventHandler(this.btnFindEvents_Click);
             // 
             // FindInsuredForm
             // 
@@ -484,5 +496,6 @@
         private System.Windows.Forms.Button btnFindInsured;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Button btnCreateEvent;
+        private System.Windows.Forms.Button btnFindEvents;
     }
 }

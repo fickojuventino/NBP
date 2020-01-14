@@ -29,71 +29,101 @@
         private void InitializeComponent()
         {
             this.dgvPolicies = new System.Windows.Forms.DataGridView();
-            this.Tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vrsta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Izmeni = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cbType = new System.Windows.Forms.ComboBox();
+            this.cbKind = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnFind = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolicies)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPolicies
             // 
             this.dgvPolicies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPolicies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Tip,
-            this.Vrsta,
-            this.Izmeni});
-            this.dgvPolicies.Location = new System.Drawing.Point(12, 12);
+            this.dgvPolicies.Location = new System.Drawing.Point(12, 56);
             this.dgvPolicies.Name = "dgvPolicies";
             this.dgvPolicies.RowHeadersWidth = 51;
             this.dgvPolicies.RowTemplate.Height = 24;
-            this.dgvPolicies.Size = new System.Drawing.Size(526, 264);
+            this.dgvPolicies.Size = new System.Drawing.Size(503, 264);
             this.dgvPolicies.TabIndex = 0;
-            this.dgvPolicies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPolicies_CellContentClick);
             // 
-            // Tip
+            // cbType
             // 
-            this.Tip.DataPropertyName = "Tip";
-            this.Tip.HeaderText = "Tip";
-            this.Tip.MinimumWidth = 6;
-            this.Tip.Name = "Tip";
-            this.Tip.Width = 125;
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Items.AddRange(new object[] {
+            "Putno osiguranje",
+            "Zdravstveno osiguranje",
+            "Zivotno Osiguranje"});
+            this.cbType.Location = new System.Drawing.Point(12, 26);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(197, 24);
+            this.cbType.TabIndex = 1;
             // 
-            // Vrsta
+            // cbKind
             // 
-            this.Vrsta.DataPropertyName = "Vrsta";
-            this.Vrsta.HeaderText = "Vrsta";
-            this.Vrsta.MinimumWidth = 6;
-            this.Vrsta.Name = "Vrsta";
-            this.Vrsta.Width = 125;
+            this.cbKind.FormattingEnabled = true;
+            this.cbKind.Items.AddRange(new object[] {
+            "Individualno",
+            "Porodicno"});
+            this.cbKind.Location = new System.Drawing.Point(215, 26);
+            this.cbKind.Name = "cbKind";
+            this.cbKind.Size = new System.Drawing.Size(174, 24);
+            this.cbKind.TabIndex = 1;
             // 
-            // Izmeni
+            // label1
             // 
-            this.Izmeni.DataPropertyName = "Izmeni";
-            this.Izmeni.HeaderText = "";
-            this.Izmeni.MinimumWidth = 6;
-            this.Izmeni.Name = "Izmeni";
-            this.Izmeni.Text = "Izmeni";
-            this.Izmeni.Width = 125;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Tip";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(215, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Vrsta";
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(395, 26);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(120, 24);
+            this.btnFind.TabIndex = 3;
+            this.btnFind.Text = "Pretraga";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // PoliciesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 288);
+            this.ClientSize = new System.Drawing.Size(528, 328);
+            this.Controls.Add(this.btnFind);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbKind);
+            this.Controls.Add(this.cbType);
             this.Controls.Add(this.dgvPolicies);
             this.Name = "PoliciesForm";
             this.Text = "PoliciesForm";
-            this.Load += new System.EventHandler(this.PoliciesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolicies)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dgvPolicies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tip;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vrsta;
-        private System.Windows.Forms.DataGridViewButtonColumn Izmeni;
+        private System.Windows.Forms.ComboBox cbType;
+        private System.Windows.Forms.ComboBox cbKind;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnFind;
     }
 }

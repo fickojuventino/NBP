@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -45,8 +46,11 @@ namespace EasyInsurance
                 }
                 else
                 {
-                    WorkerForm workerForm = new WorkerForm(client);
-                    workerForm.Show();
+                    var t = new Thread(() => Application.Run(new WorkerForm(client, this)));
+                    t.Start();
+                    this.Close();
+                    //WorkerForm workerForm = new WorkerForm(client, this);
+                    //workerForm.Show();
                 }
             }
             catch(Exception ex)

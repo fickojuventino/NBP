@@ -59,6 +59,7 @@
             this.cbInsuranceKind.Name = "cbInsuranceKind";
             this.cbInsuranceKind.Size = new System.Drawing.Size(167, 24);
             this.cbInsuranceKind.TabIndex = 0;
+            this.cbInsuranceKind.SelectedIndexChanged += new System.EventHandler(this.cbInsuranceKind_SelectedIndexChanged);
             // 
             // label1
             // 

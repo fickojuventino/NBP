@@ -34,13 +34,13 @@ namespace EasyInsurance
         {
             try
             {
-                var query = new CypherQuery("Match (i:Insured {Identifier: '" + identifier + "'})-[r:HAS_POLICY]->(p:Policy) return p",
-                    new Dictionary<string, object>(), CypherResultMode.Set);
-                var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<Policy>(query).ToList();
+                //var query = new CypherQuery("Match (i:Insured {Identifier: '" + identifier + "'})-[r:HAS_POLICY]->(p:Policy) return p",
+                //    new Dictionary<string, object>(), CypherResultMode.Set);
+                //var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<Policy>(query).ToList();
 
-                dgvPolicies.AutoGenerateColumns = false;
-                dgvPolicies.AllowUserToAddRows = false;
-                dgvPolicies.DataSource = policies;
+                //dgvPolicies.AutoGenerateColumns = false;
+                //dgvPolicies.AllowUserToAddRows = false;
+                //dgvPolicies.DataSource = policies;
             }
             catch(Exception ex)
             {
@@ -48,25 +48,91 @@ namespace EasyInsurance
             }
         }
 
-        private void dgvPolicies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnFind_Click(object sender, EventArgs e)
         {
-            //var senderGrid = (DataGridView)sender;
-
-            if (dgvPolicies.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
+            try
             {
-                var selected = dgvPolicies[0, e.RowIndex].Value.ToString();
-                if (selected == "Zivotno Osiguranje")
+                if(cbKind.Text == "Individualno")
                 {
-                    LifeInsuranceForm lifeInsuranceForm = new LifeInsuranceForm();
-                    lifeInsuranceForm.Show();
+                    var query = new CypherQuery("Match (i:Insured {Identifier: '" + identifier +
+                    "'})-[r:HAS_POLICY]->(p:Policy) where p.Tip = '" + cbType.Text + "' and p.Vrsta = '" + cbKind.Text + "' return r",
+                    new Dictionary<string, object>(), CypherResultMode.Set);
+                    if (cbType.Text == "Zdravstveno osiguranje")
+                    {
+                        var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<IndividualHealth>(query).ToList();
+
+                        DataTable table = new DataTable();
+
+                        table.Columns.Add("Vanbolnicko", typeof(string));
+                        table.Columns.Add("Bolnicko", typeof(string));
+                        table.Columns.Add("Uplata", typeof(decimal));
+                        table.Columns.Add("Isplata", typeof(decimal));
+
+                        foreach (var policy in policies)
+                        {
+                            table.Rows.Add(policy.Vanbolnicko, policy.Bolnicko, policy.Uplata, policy.Isplata);
+                        }
+                        dgvPolicies.DataSource = table;
+                    }
+                    else if(cbType.Text == "Putno osiguranje")
+                    {
+                        var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<IndividualTravel>(query).ToList();
+
+                        DataTable table = new DataTable();
+
+                        table.Columns.Add("Datum od", typeof(DateTime));
+                        table.Columns.Add("Datum do", typeof(DateTime));
+                        table.Columns.Add("Uplata", typeof(decimal));
+                        table.Columns.Add("Osiguravajuca suma", typeof(decimal));
+                        table.Columns.Add("Destinacija", typeof(string));
+                        table.Columns.Add("Svrha", typeof(string));
+
+                        foreach (var policy in policies)
+                        {
+                            table.Rows.Add(policy.DatumOd, policy.DatumDo, policy.Uplata, policy.OsiguravajucaSuma, policy.Destinacija, policy.Svrha);
+                        }
+                        dgvPolicies.DataSource = table;
+                    }
+                    else if(cbType.Text == "Zivotno Osiguranje")
+                    {
+
+                    }
                 }
-                else if(selected == "Putno osiguranje")
+                else
                 {
-                    TravelInsuranceForm travelInsuranceForm = new TravelInsuranceForm();
-                    travelInsuranceForm.Show();
+                    if(cbType.Text == "Putno osiguranje")
+                    {
+
+                    }
+                    else if(cbType.Text == "Zivotno Osiguranje")
+                    {
+
+                    }
                 }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
+    }
+
+    public class IndividualHealth
+    {
+        public decimal Uplata { get; set; }
+        public decimal Isplata { get; set; }
+        public string Vanbolnicko { get; set; }
+        public string Bolnicko { get; set; }
+    }
+
+    public class IndividualTravel
+    {
+        public DateTime DatumOd { get; set; }
+        public DateTime DatumDo { get; set; }
+        public string Destinacija { get; set; }
+        public decimal OsiguravajucaSuma { get; set; }
+        public string Svrha { get; set; }
+        public decimal Uplata { get; set; }
     }
 }

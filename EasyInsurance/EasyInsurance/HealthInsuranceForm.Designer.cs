@@ -32,12 +32,14 @@
             this.btnInsure = new System.Windows.Forms.Button();
             this.tbInsurancePayout = new System.Windows.Forms.TextBox();
             this.tbInsuranceStake = new System.Windows.Forms.TextBox();
+            this.chbOutpatient = new System.Windows.Forms.CheckBox();
+            this.chbHospital = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(12, 102);
+            this.lbStatus.Location = new System.Drawing.Point(12, 138);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(46, 17);
             this.lbStatus.TabIndex = 15;
@@ -46,12 +48,13 @@
             // 
             // btnInsure
             // 
-            this.btnInsure.Location = new System.Drawing.Point(92, 78);
+            this.btnInsure.Location = new System.Drawing.Point(101, 120);
             this.btnInsure.Name = "btnInsure";
             this.btnInsure.Size = new System.Drawing.Size(75, 23);
             this.btnInsure.TabIndex = 14;
             this.btnInsure.Text = "Osiguraj";
             this.btnInsure.UseVisualStyleBackColor = true;
+            this.btnInsure.Click += new System.EventHandler(this.btnInsure_Click);
             // 
             // tbInsurancePayout
             // 
@@ -69,11 +72,33 @@
             this.tbInsuranceStake.TabIndex = 12;
             this.tbInsuranceStake.Text = "Uplata mesecno";
             // 
+            // chbOutpatient
+            // 
+            this.chbOutpatient.AutoSize = true;
+            this.chbOutpatient.Location = new System.Drawing.Point(15, 69);
+            this.chbOutpatient.Name = "chbOutpatient";
+            this.chbOutpatient.Size = new System.Drawing.Size(156, 21);
+            this.chbOutpatient.TabIndex = 16;
+            this.chbOutpatient.Text = "Vanbolnicko lecenje";
+            this.chbOutpatient.UseVisualStyleBackColor = true;
+            // 
+            // chbHospital
+            // 
+            this.chbHospital.AutoSize = true;
+            this.chbHospital.Location = new System.Drawing.Point(15, 93);
+            this.chbHospital.Name = "chbHospital";
+            this.chbHospital.Size = new System.Drawing.Size(132, 21);
+            this.chbHospital.TabIndex = 16;
+            this.chbHospital.Text = "Bolnicko lecenje";
+            this.chbHospital.UseVisualStyleBackColor = true;
+            // 
             // HealthInsuranceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 127);
+            this.ClientSize = new System.Drawing.Size(293, 164);
+            this.Controls.Add(this.chbHospital);
+            this.Controls.Add(this.chbOutpatient);
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.btnInsure);
             this.Controls.Add(this.tbInsurancePayout);
@@ -91,5 +116,7 @@
         private System.Windows.Forms.Button btnInsure;
         private System.Windows.Forms.TextBox tbInsurancePayout;
         private System.Windows.Forms.TextBox tbInsuranceStake;
+        private System.Windows.Forms.CheckBox chbOutpatient;
+        private System.Windows.Forms.CheckBox chbHospital;
     }
 }

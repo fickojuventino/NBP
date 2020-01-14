@@ -32,7 +32,6 @@
             this.tbFindInsured = new System.Windows.Forms.Button();
             this.btnStatistic = new System.Windows.Forms.Button();
             this.lbLogout = new System.Windows.Forms.LinkLabel();
-            this.btnCreateEvent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddInsured
@@ -57,7 +56,7 @@
             // 
             // btnStatistic
             // 
-            this.btnStatistic.Location = new System.Drawing.Point(13, 160);
+            this.btnStatistic.Location = new System.Drawing.Point(12, 111);
             this.btnStatistic.Name = "btnStatistic";
             this.btnStatistic.Size = new System.Drawing.Size(246, 43);
             this.btnStatistic.TabIndex = 2;
@@ -68,35 +67,26 @@
             // lbLogout
             // 
             this.lbLogout.AutoSize = true;
-            this.lbLogout.Location = new System.Drawing.Point(192, 206);
+            this.lbLogout.Location = new System.Drawing.Point(192, 157);
             this.lbLogout.Name = "lbLogout";
             this.lbLogout.Size = new System.Drawing.Size(67, 17);
             this.lbLogout.TabIndex = 3;
             this.lbLogout.TabStop = true;
             this.lbLogout.Text = "Izloguj se";
-            // 
-            // btnCreateEvent
-            // 
-            this.btnCreateEvent.Location = new System.Drawing.Point(13, 111);
-            this.btnCreateEvent.Name = "btnCreateEvent";
-            this.btnCreateEvent.Size = new System.Drawing.Size(246, 43);
-            this.btnCreateEvent.TabIndex = 2;
-            this.btnCreateEvent.Text = "Kreiraj dogadjaj";
-            this.btnCreateEvent.UseVisualStyleBackColor = true;
-            this.btnCreateEvent.Click += new System.EventHandler(this.btnCreateEvent_Click);
+            this.lbLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbLogout_LinkClicked);
             // 
             // WorkerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 231);
+            this.ClientSize = new System.Drawing.Size(271, 182);
             this.Controls.Add(this.lbLogout);
-            this.Controls.Add(this.btnCreateEvent);
             this.Controls.Add(this.btnStatistic);
             this.Controls.Add(this.tbFindInsured);
             this.Controls.Add(this.btnAddInsured);
             this.Name = "WorkerForm";
             this.Text = "WorkerForm";
+            this.Load += new System.EventHandler(this.WorkerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,6 +98,5 @@
         private System.Windows.Forms.Button tbFindInsured;
         private System.Windows.Forms.Button btnStatistic;
         private System.Windows.Forms.LinkLabel lbLogout;
-        private System.Windows.Forms.Button btnCreateEvent;
     }
 }
