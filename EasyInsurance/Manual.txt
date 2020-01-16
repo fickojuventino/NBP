@@ -1,0 +1,6 @@
+Neophodno je uneti polise u bazu podataka.
+create (p:Policy {Tip:"Putno osiguranje", Vrsta: "Individualno"})
+create (p:Policy {Tip:"Zivotno Osiguranje", Vrsta: "Individualno"})
+create (p:Policy {Tip:"Zdravstveno osiguranje", Vrsta: "Individualno"})
+create (p:Policy {Tip:"Putno osiguranje", Vrsta: "Porodicno"})
+create (p:Policy {Tip:"Zivotno Osiguranje", Vrsta: "Porodicno"})

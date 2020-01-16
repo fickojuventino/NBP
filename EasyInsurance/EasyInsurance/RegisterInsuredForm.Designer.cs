@@ -43,9 +43,10 @@
             // 
             // btnAddInsured
             // 
-            this.btnAddInsured.Location = new System.Drawing.Point(114, 266);
+            this.btnAddInsured.Location = new System.Drawing.Point(115, 266);
+            this.btnAddInsured.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddInsured.Name = "btnAddInsured";
-            this.btnAddInsured.Size = new System.Drawing.Size(142, 23);
+            this.btnAddInsured.Size = new System.Drawing.Size(141, 23);
             this.btnAddInsured.TabIndex = 9;
             this.btnAddInsured.Text = "Kreiraj nalog";
             this.btnAddInsured.UseVisualStyleBackColor = true;
@@ -55,6 +56,7 @@
             // 
             this.tbFirstName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tbFirstName.Location = new System.Drawing.Point(45, 12);
+            this.tbFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(293, 22);
             this.tbFirstName.TabIndex = 0;
@@ -62,7 +64,8 @@
             // 
             // tbLastName
             // 
-            this.tbLastName.Location = new System.Drawing.Point(45, 40);
+            this.tbLastName.Location = new System.Drawing.Point(45, 39);
+            this.tbLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(293, 22);
             this.tbLastName.TabIndex = 1;
@@ -71,6 +74,7 @@
             // tbIdentifier
             // 
             this.tbIdentifier.Location = new System.Drawing.Point(45, 68);
+            this.tbIdentifier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbIdentifier.Name = "tbIdentifier";
             this.tbIdentifier.Size = new System.Drawing.Size(293, 22);
             this.tbIdentifier.TabIndex = 2;
@@ -83,6 +87,7 @@
             "M",
             "Ž"});
             this.cbGender.Location = new System.Drawing.Point(45, 124);
+            this.cbGender.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(121, 24);
             this.cbGender.TabIndex = 4;
@@ -90,6 +95,7 @@
             // dtpBirthdate
             // 
             this.dtpBirthdate.Location = new System.Drawing.Point(45, 154);
+            this.dtpBirthdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(247, 22);
             this.dtpBirthdate.TabIndex = 5;
@@ -97,6 +103,7 @@
             // tbCreditCard
             // 
             this.tbCreditCard.Location = new System.Drawing.Point(45, 182);
+            this.tbCreditCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbCreditCard.Name = "tbCreditCard";
             this.tbCreditCard.Size = new System.Drawing.Size(293, 22);
             this.tbCreditCard.TabIndex = 6;
@@ -105,6 +112,7 @@
             // tbPhoneNumber
             // 
             this.tbPhoneNumber.Location = new System.Drawing.Point(45, 210);
+            this.tbPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(293, 22);
             this.tbPhoneNumber.TabIndex = 7;
@@ -113,6 +121,7 @@
             // tbMail
             // 
             this.tbMail.Location = new System.Drawing.Point(45, 238);
+            this.tbMail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMail.Name = "tbMail";
             this.tbMail.Size = new System.Drawing.Size(293, 22);
             this.tbMail.TabIndex = 8;
@@ -121,6 +130,7 @@
             // tbAddress
             // 
             this.tbAddress.Location = new System.Drawing.Point(45, 96);
+            this.tbAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(293, 22);
             this.tbAddress.TabIndex = 3;
@@ -129,7 +139,7 @@
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(159, 295);
+            this.lbStatus.Location = new System.Drawing.Point(142, 295);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(48, 17);
             this.lbStatus.TabIndex = 6;
@@ -152,6 +162,7 @@
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.btnAddInsured);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RegisterInsuredForm";
             this.Text = "RegisterInsuredForm";
             this.Load += new System.EventHandler(this.RegisterInsuredForm_Load);

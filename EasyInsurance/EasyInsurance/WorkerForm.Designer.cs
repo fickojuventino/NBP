@@ -30,7 +30,6 @@
         {
             this.btnAddInsured = new System.Windows.Forms.Button();
             this.tbFindInsured = new System.Windows.Forms.Button();
-            this.btnStatistic = new System.Windows.Forms.Button();
             this.lbLogout = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
@@ -54,20 +53,10 @@
             this.tbFindInsured.UseVisualStyleBackColor = true;
             this.tbFindInsured.Click += new System.EventHandler(this.tbFindInsured_Click);
             // 
-            // btnStatistic
-            // 
-            this.btnStatistic.Location = new System.Drawing.Point(12, 111);
-            this.btnStatistic.Name = "btnStatistic";
-            this.btnStatistic.Size = new System.Drawing.Size(246, 43);
-            this.btnStatistic.TabIndex = 2;
-            this.btnStatistic.Text = "Statistika";
-            this.btnStatistic.UseVisualStyleBackColor = true;
-            this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
-            // 
             // lbLogout
             // 
             this.lbLogout.AutoSize = true;
-            this.lbLogout.Location = new System.Drawing.Point(192, 157);
+            this.lbLogout.Location = new System.Drawing.Point(192, 124);
             this.lbLogout.Name = "lbLogout";
             this.lbLogout.Size = new System.Drawing.Size(67, 17);
             this.lbLogout.TabIndex = 3;
@@ -79,9 +68,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 182);
+            this.ClientSize = new System.Drawing.Size(271, 149);
             this.Controls.Add(this.lbLogout);
-            this.Controls.Add(this.btnStatistic);
             this.Controls.Add(this.tbFindInsured);
             this.Controls.Add(this.btnAddInsured);
             this.Name = "WorkerForm";
@@ -96,7 +84,6 @@
 
         private System.Windows.Forms.Button btnAddInsured;
         private System.Windows.Forms.Button tbFindInsured;
-        private System.Windows.Forms.Button btnStatistic;
         private System.Windows.Forms.LinkLabel lbLogout;
     }
 }

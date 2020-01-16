@@ -1,13 +1,6 @@
 ﻿using Neo4jClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyInsurance
@@ -45,11 +38,6 @@ namespace EasyInsurance
         {
             FindInsuredForm insured = new FindInsuredForm(client);
             insured.Show();
-        }   
-
-        private void btnStatistic_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void lbLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

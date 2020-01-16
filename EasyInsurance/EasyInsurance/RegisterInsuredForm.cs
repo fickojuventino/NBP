@@ -3,12 +3,7 @@ using Neo4jClient;
 using Neo4jClient.Cypher;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyInsurance
@@ -26,13 +21,13 @@ namespace EasyInsurance
         {
             try
             {
-                var query = new Neo4jClient.Cypher.CypherQuery($"MATCH (i:Insured) WHERE i.Identifier = '{long.Parse(tbIdentifier.Text)}'" +
+                var query = new CypherQuery($"MATCH (i:Insured) WHERE i.Identifier = '{long.Parse(tbIdentifier.Text)}'" +
                         $" or i.MailAddress = '" + tbMail.Text + "' or i.PhoneNumber = '" + tbPhoneNumber.Text + 
                         "' or i.CreditCard = '" + tbCreditCard.Text +  "' RETURN i", new Dictionary<string, object>(), CypherResultMode.Set);
 
                 var user = ((IRawGraphClient)client).ExecuteGetCypherResults<Insured>(query).ToList().FirstOrDefault();
 
-                if (user == null)
+                if (user == null && checkRequirements())
                 {
                     Insured insured = new Insured
                     {
@@ -60,7 +55,7 @@ namespace EasyInsurance
                         { "PhoneNumber", insured.PhoneNumber }
                     };
 
-                    query = new Neo4jClient.Cypher.CypherQuery("Create (i:Insured {FirstName: '"
+                    query = new CypherQuery("Create (i:Insured {FirstName: '"
                         + insured.FirstName + "', LastName: '" + insured.LastName + "', Identifier: '"
                         + insured.Identifier + "', Address: '" + insured.Address + "', MailAddress: '" + insured.MailAddress
                         + "', BirthDate: '" + insured.BirthDate + "', CreditCard: '" + insured.CreditCard 
@@ -69,13 +64,12 @@ namespace EasyInsurance
 
                     ((IRawGraphClient)client).ExecuteCypher(query);
 
-                    lbStatus.Text = "Registracija osiguranika uspesna uspesna.";
+                    lbStatus.Text = "Registracija osiguranika uspesna.";
                     lbStatus.Visible = true;
                 }
-                else
+                else if(user != null)
                 {
-                    lbStatus.Text = "JMBG, broj telefona, mejl adresa i broj racuna moraju biti jedinstveni.";
-                    lbStatus.Visible = true;
+                    MessageBox.Show("JMBG, broj telefona, mejl adresa i broj racuna moraju biti jedinstveni.");
                 }
             }
             catch(Exception ex)
@@ -87,6 +81,50 @@ namespace EasyInsurance
         private void RegisterInsuredForm_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private bool checkRequirements()
+        {
+            var response = "";
+
+            if(tbFirstName.Text.Length < 3) {
+                response += "Ime mora imati minimum 3 karaktera.\n";
+            }
+            if(tbLastName.Text.Length < 3)
+            {
+                response += "Prezime mora imati minimum 3 karaktera.\n";
+            }
+            if(tbIdentifier.Text.Length < 13)
+            {
+                response += "JMBG mora sadrzati 13 cifara.\n";
+            }
+            if(tbAddress.Text.Length < 10)
+            {
+                response += "Adresa mora biti minimalne duzine od 10 karaktera. Uneti i broj ulice i stana.\n";
+            }
+            if(cbGender.Text != "M" && cbGender.Text != "Z")
+            {
+                response += "Morate izabrati pol.\n";
+            }
+            if(tbCreditCard.Text.Split('-').Length < 3)
+            {
+                response += "Broj racuna mora biti u formatu XXX-XXXXX-XXX\n";
+            }
+            if(tbPhoneNumber.Text.Length < 9)
+            {
+                response += "Broj telefona mora imati najmanje 9 karaktera.\n";
+            }
+            if(tbMail.Text.Split('@').Length < 2)
+            {
+                response += "Format mejl adrese text@text.text.\n";
+            }
+            if(response.Length > 0)
+            {
+                MessageBox.Show(response);
+                return false;
+            }
+
+            return true;
         }
     }
 }

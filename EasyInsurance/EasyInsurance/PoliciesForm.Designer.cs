@@ -40,11 +40,12 @@
             // dgvPolicies
             // 
             this.dgvPolicies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPolicies.Location = new System.Drawing.Point(12, 56);
+            this.dgvPolicies.Location = new System.Drawing.Point(9, 46);
+            this.dgvPolicies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvPolicies.Name = "dgvPolicies";
             this.dgvPolicies.RowHeadersWidth = 51;
             this.dgvPolicies.RowTemplate.Height = 24;
-            this.dgvPolicies.Size = new System.Drawing.Size(503, 264);
+            this.dgvPolicies.Size = new System.Drawing.Size(377, 214);
             this.dgvPolicies.TabIndex = 0;
             // 
             // cbType
@@ -54,9 +55,10 @@
             "Putno osiguranje",
             "Zdravstveno osiguranje",
             "Zivotno Osiguranje"});
-            this.cbType.Location = new System.Drawing.Point(12, 26);
+            this.cbType.Location = new System.Drawing.Point(9, 21);
+            this.cbType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbType.Name = "cbType";
-            this.cbType.Size = new System.Drawing.Size(197, 24);
+            this.cbType.Size = new System.Drawing.Size(149, 21);
             this.cbType.TabIndex = 1;
             // 
             // cbKind
@@ -65,34 +67,38 @@
             this.cbKind.Items.AddRange(new object[] {
             "Individualno",
             "Porodicno"});
-            this.cbKind.Location = new System.Drawing.Point(215, 26);
+            this.cbKind.Location = new System.Drawing.Point(161, 21);
+            this.cbKind.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbKind.Name = "cbKind";
-            this.cbKind.Size = new System.Drawing.Size(174, 24);
+            this.cbKind.Size = new System.Drawing.Size(132, 21);
             this.cbKind.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 6);
+            this.label1.Location = new System.Drawing.Point(9, 5);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 17);
+            this.label1.Size = new System.Drawing.Size(22, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tip";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(215, 6);
+            this.label2.Location = new System.Drawing.Point(161, 5);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 17);
+            this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Vrsta";
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(395, 26);
+            this.btnFind.Location = new System.Drawing.Point(296, 21);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(120, 24);
+            this.btnFind.Size = new System.Drawing.Size(90, 21);
             this.btnFind.TabIndex = 3;
             this.btnFind.Text = "Pretraga";
             this.btnFind.UseVisualStyleBackColor = true;
@@ -100,15 +106,16 @@
             // 
             // PoliciesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 328);
+            this.ClientSize = new System.Drawing.Size(396, 266);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbKind);
             this.Controls.Add(this.cbType);
             this.Controls.Add(this.dgvPolicies);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PoliciesForm";
             this.Text = "PoliciesForm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolicies)).EndInit();

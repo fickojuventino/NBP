@@ -1,14 +1,10 @@
-﻿using EasyInsurance.Models;
+﻿using EasyInsurance.Models.Relationships;
 using Neo4jClient;
 using Neo4jClient.Cypher;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyInsurance
@@ -30,29 +26,11 @@ namespace EasyInsurance
             InitializeComponent();
         }
 
-        private void PoliciesForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                //var query = new CypherQuery("Match (i:Insured {Identifier: '" + identifier + "'})-[r:HAS_POLICY]->(p:Policy) return p",
-                //    new Dictionary<string, object>(), CypherResultMode.Set);
-                //var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<Policy>(query).ToList();
-
-                //dgvPolicies.AutoGenerateColumns = false;
-                //dgvPolicies.AllowUserToAddRows = false;
-                //dgvPolicies.DataSource = policies;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void btnFind_Click(object sender, EventArgs e)
         {
             try
             {
-                if(cbKind.Text == "Individualno")
+                if (cbKind.Text == "Individualno")
                 {
                     var query = new CypherQuery("Match (i:Insured {Identifier: '" + identifier +
                     "'})-[r:HAS_POLICY]->(p:Policy) where p.Tip = '" + cbType.Text + "' and p.Vrsta = '" + cbKind.Text + "' return r",
@@ -73,8 +51,9 @@ namespace EasyInsurance
                             table.Rows.Add(policy.Vanbolnicko, policy.Bolnicko, policy.Uplata, policy.Isplata);
                         }
                         dgvPolicies.DataSource = table;
+
                     }
-                    else if(cbType.Text == "Putno osiguranje")
+                    else if (cbType.Text == "Putno osiguranje")
                     {
                         var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<IndividualTravel>(query).ToList();
 
@@ -93,23 +72,76 @@ namespace EasyInsurance
                         }
                         dgvPolicies.DataSource = table;
                     }
-                    else if(cbType.Text == "Zivotno Osiguranje")
+                    else if (cbType.Text == "Zivotno Osiguranje")
                     {
+                        var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<IndividualLife>(query).ToList();
 
+                        DataTable table = new DataTable();
+
+                        table.Columns.Add("Razlog", typeof(string));
+                        table.Columns.Add("Pusac", typeof(string));
+                        table.Columns.Add("Uplata", typeof(decimal));
+                        table.Columns.Add("OsiguravajucaSuma", typeof(decimal));
+
+                        foreach (var policy in policies)
+                        {
+                            table.Rows.Add(policy.Razlog, policy.Pusac, policy.Uplata, policy.OsiguravajucaSuma);
+                        }
+
+                        dgvPolicies.DataSource = table;
                     }
                 }
-                else
+                else if (cbKind.Text == "Porodicno")
                 {
-                    if(cbType.Text == "Putno osiguranje")
-                    {
+                    var query = new CypherQuery("Match (i:Insured {Identifier: '" + identifier +
+                    "'})-[r:HAS_GROUP_POLICY]->(p:Policy) where p.Tip = '" + cbType.Text + "' and p.Vrsta = '" + cbKind.Text + "' return r",
+                    new Dictionary<string, object>(), CypherResultMode.Set);
 
+                    if (cbType.Text == "Putno osiguranje")
+                    {
+                        var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<GroupTravel>(query).ToList();
+
+                        DataTable table = new DataTable();
+
+                        table.Columns.Add("Datum od", typeof(DateTime));
+                        table.Columns.Add("Datum do", typeof(DateTime));
+                        table.Columns.Add("Uplata", typeof(decimal));
+                        table.Columns.Add("Osiguravajuca suma", typeof(decimal));
+                        table.Columns.Add("Destinacija", typeof(string));
+                        table.Columns.Add("Svrha", typeof(string));
+                        table.Columns.Add("DrugiClan", typeof(string));
+                        table.Columns.Add("TreciClan", typeof(string));
+                        table.Columns.Add("CetvrtiClan", typeof(string));
+
+                        foreach (var policy in policies)
+                        {
+                            table.Rows.Add(policy.DatumOd, policy.DatumDo, policy.Uplata, policy.OsiguravajucaSuma, policy.Destinacija, policy.Svrha, policy.DrugiClan, policy.TreciClan, policy.CetvrtiClan);
+                        }
+                        dgvPolicies.DataSource = table;
                     }
-                    else if(cbType.Text == "Zivotno Osiguranje")
+                    else if (cbType.Text == "Zivotno Osiguranje")
                     {
+                        var policies = ((IRawGraphClient)client).ExecuteGetCypherResults<GroupLife>(query).ToList();
 
+                        DataTable table = new DataTable();
+
+                        table.Columns.Add("Razlog", typeof(string));
+                        table.Columns.Add("Pusac", typeof(string));
+                        table.Columns.Add("Uplata", typeof(decimal));
+                        table.Columns.Add("OsiguravajucaSuma", typeof(decimal));
+                        table.Columns.Add("DrugiClan", typeof(string));
+                        table.Columns.Add("TreciClan", typeof(string));
+                        table.Columns.Add("CetvrtiClan", typeof(string));
+
+                        foreach (var policy in policies)
+                        {
+                            table.Rows.Add(policy.Razlog, policy.Pusac, policy.Uplata, policy.OsiguravajucaSuma, policy.DrugiClan, policy.TreciClan, policy.CetvrtiClan);
+                        }
+
+                        dgvPolicies.DataSource = table;
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -118,21 +150,10 @@ namespace EasyInsurance
         }
     }
 
-    public class IndividualHealth
+    public class asd
     {
-        public decimal Uplata { get; set; }
-        public decimal Isplata { get; set; }
-        public string Vanbolnicko { get; set; }
-        public string Bolnicko { get; set; }
-    }
-
-    public class IndividualTravel
-    {
-        public DateTime DatumOd { get; set; }
-        public DateTime DatumDo { get; set; }
-        public string Destinacija { get; set; }
-        public decimal OsiguravajucaSuma { get; set; }
-        public string Svrha { get; set; }
-        public decimal Uplata { get; set; }
+        public string Tip { get; set; }
+        public string Vrsta { get; set; }
+        //public int Ukupno { get; set; }
     }
 }

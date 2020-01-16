@@ -104,10 +104,15 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\Insured.cs" />
-    <Compile Include="Models\Policy.cs" />
-    <Compile Include="Models\Worker.cs" />
+    <Compile Include="Models\Entities\Event.cs" />
+    <Compile Include="Models\Entities\Insured.cs" />
+    <Compile Include="Models\Entities\Policy.cs" />
+    <Compile Include="Models\Entities\Worker.cs" />
+    <Compile Include="Models\Relationships\GroupLife.cs" />
+    <Compile Include="Models\Relationships\GroupTravel.cs" />
+    <Compile Include="Models\Relationships\IndividualHealth.cs" />
+    <Compile Include="Models\Relationships\IndividualLife.cs" />
+    <Compile Include="Models\Relationships\IndividualTravel.cs" />
     <Compile Include="PoliciesForm.cs">
       <SubType>Form</SubType>
     </Compile>
